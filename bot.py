@@ -30,7 +30,7 @@ async def on_ready():
 
 # subreddit
 @client.command(pass_context=True)
-async def subreddit(ctx, subreddit = "all", time = "day"):
+async def reddit(ctx, subreddit = "all", time = "day"):
    # await print(top)
     await top_subreddit(subreddit, time)
 
