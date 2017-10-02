@@ -2,9 +2,13 @@ import praw
 import discord
 from discord.ext import commands
 
-reddit = praw.Reddit(client_id = '',
-                     client_secret = '',
-                     user_agent = 'aySH Bot')
+import os
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
+reddit = praw.Reddit(client_id = os.environ.get("REDDIT_CLIENT_ID"),
+                     client_secret = os.environ.get("REDDIT_CLIENT_SECRET"),
+                     user_agent = "aySH Bot")
 
 print(reddit.read_only)
 
@@ -29,7 +33,7 @@ async def on_ready():
 async def subreddit(ctx, subreddit = "all", time = "day"):
    # await print(top)
     await top_subreddit(subreddit, time)
-  
+
 # random
 @client.command(pass_context=True)
 async def random(ctx):
@@ -46,4 +50,4 @@ async def build(ctx, champion = "janna"):
 async def counter(ctx, champion = "janna"):
     await client.say('http://lolcounter.com/champions/' + champion)
 
-client.run('')
+client.run(os.environ.get("DISCORD_CLIENT_TOKEN"))
