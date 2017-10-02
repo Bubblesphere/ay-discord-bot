@@ -5,13 +5,12 @@ A discord bot with the mission to fulfill needs of League enthusiasts
 - 
 
 # Commands
-
----
 ## reddit
 ### Description
 fetches the top post from a subreddit.
 ### Syntax
 `!reddit [subreddit] [time]`
+
 | Parameters | Description | Optional? | Default |
 | ------ | ------ | :------: | :------: |
 | subreddit | String corresponding an existing subreddit to fetch the information from | X | all |
@@ -30,6 +29,7 @@ fetches the all time top post from a random subreddit.
 Provides a link to a League of Legends champion build
 ### Syntax
 `!build [champion]`
+
 | Parameters | Description | Optional? | Default |
 | ------ | ------ | :------: | :------: |
 | champion | String corresponding to a League of Legends champion. Neglect spaces and syntax | X | janna |
@@ -40,6 +40,7 @@ Provides a link to a League of Legends champion build
 Provides a link to a League of Legends champion counters
 ### Syntax
 `!counter [champion]`
+
 | Parameters | Description | Optional? | Default |
 | ------ | ------ | :------: | :------: |
 | champion | String corresponding to a League of Legends champion. Neglect spaces and syntax | X | janna |
