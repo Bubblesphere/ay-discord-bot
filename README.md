@@ -1,8 +1,11 @@
 # AY Discord Bot
 A discord bot with the mission to fulfill needs of League enthusiasts
 # Prerequisites
-- 
-- 
+You need `pipenv` in order to run the bot you can find the installation instruction [here](https://github.com/kennethreitz/pipenv).
+
+# Running the Bot
+- Run `pipenv install` to install the dependancies
+- Then run `pipenv run python bot.py` to launch the bot
 
 # Commands
 ## reddit

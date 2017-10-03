@@ -6,14 +6,15 @@ import os
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
-reddit = praw.Reddit(client_id = os.environ.get("REDDIT_CLIENT_ID"),
+reddit_object = praw.Reddit(client_id = os.environ.get("REDDIT_CLIENT_ID"),
                      client_secret = os.environ.get("REDDIT_CLIENT_SECRET"),
                      user_agent = "aySH Bot")
 
-print(reddit.read_only)
+# Verify that we are in `read_only` mode
+print(reddit_object.read_only)
 
 async def top_subreddit(subreddit, time):
-    tops = reddit.subreddit(subreddit).top(time, limit = 1)
+    tops = reddit_object.subreddit(subreddit).top(time, limit = 1)
     for top in tops:
         await client.say(top.url)
 
@@ -31,13 +32,11 @@ async def on_ready():
 # subreddit
 @client.command(pass_context=True)
 async def reddit(ctx, subreddit = "all", time = "day"):
-   # await print(top)
     await top_subreddit(subreddit, time)
 
 # random
 @client.command(pass_context=True)
 async def random(ctx):
-   # await print(top)
     await top_subreddit('random', 'all')
 
 # probuild
