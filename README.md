@@ -5,6 +5,10 @@ You need `pipenv` in order to run the bot you can find the installation instruct
 
 # Running the Bot
 - Run `pipenv install` to install the dependancies
+- Run `cp .env.sample .env` to begin setting up your environment variables
+- [Setup reddit application](https://www.reddit.com/prefs/apps)
+- [Setup discord token and bot](https://github.com/Chikachi/DiscordIntegration/wiki/How-to-get-a-token-and-channel-ID-for-Discord)
+- Add your keys to `.env`
 - Then run `pipenv run python bot.py` to launch the bot
 
 # Commands
