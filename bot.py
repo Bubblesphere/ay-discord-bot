@@ -1,10 +1,13 @@
 """ Discord Bot """
 
 import os
+
 import praw
 from discord.ext import commands
-
 from dotenv import load_dotenv, find_dotenv
+
+import helper
+
 load_dotenv(find_dotenv())
 
 REDDIT = praw.Reddit(
@@ -14,13 +17,6 @@ REDDIT = praw.Reddit(
 
 # Verify that we are in `read_only` mode
 print(REDDIT.read_only)
-
-
-async def top_subreddit(subreddit, time):
-    tops = REDDIT.subreddit(subreddit).top(time, limit=1)
-    for top in tops:
-        await CLIENT.say(top.url)
-
 
 # Bot config
 PREFIX = '!'
@@ -38,13 +34,13 @@ async def on_ready():
 # subreddit
 @CLIENT.command(pass_context=True)
 async def reddit(ctx, subreddit="all", time="day"):
-    await top_subreddit(subreddit, time)
+    await helper.top_subreddit(CLIENT, REDDIT, subreddit, time)
 
 
 # random
 @CLIENT.command(pass_context=True)
 async def random(ctx):
-    await top_subreddit('random', 'all')
+    await helper.top_subreddit(CLIENT, REDDIT, 'random', 'all')
 
 
 # probuild
@@ -57,6 +53,12 @@ async def build(ctx, champion="janna"):
 @CLIENT.command(pass_context=True)
 async def counter(ctx, champion="janna"):
     await CLIENT.say('http://lolcounter.com/champions/' + champion)
+
+
+@CLIENT.command(pass_context=True)
+async def ben(ctx):
+    await helper.play(CLIENT, await helper.get_user_voice_channel(ctx),
+                      'sound/ben.mp3')
 
 
 CLIENT.run(os.environ.get("DISCORD_CLIENT_TOKEN"))

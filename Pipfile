@@ -8,6 +8,7 @@ name = "pypi"
 praw = "*"
 discord = "*"
 "python-dotenv" = "*"
+pynacl = "*"
 
 
 [dev-packages]
