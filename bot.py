@@ -61,4 +61,10 @@ async def ben(ctx):
                       'sound/ben.mp3')
 
 
+@CLIENT.command(pass_context=True)
+async def yt(ctx, link):
+    await helper.play_youtube(CLIENT, await helper.get_user_voice_channel(ctx),
+                              link)
+
+
 CLIENT.run(os.environ.get("DISCORD_CLIENT_TOKEN"))

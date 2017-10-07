@@ -9,6 +9,7 @@ praw = "*"
 discord = "*"
 "python-dotenv" = "*"
 pynacl = "*"
+"youtube-dl" = "*"
 
 
 [dev-packages]
