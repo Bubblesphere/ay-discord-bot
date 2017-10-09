@@ -45,4 +45,5 @@ async def play_youtube(CLIENT, voice_channel, link):
     # Add verification for sound
     await summon(CLIENT, voice_channel)
     player = await VOICE_CLIENT.create_ytdl_player(link)
+    player.volume = 0.05
     player.start()
