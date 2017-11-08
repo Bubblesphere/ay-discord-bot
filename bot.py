@@ -62,9 +62,9 @@ async def ben(ctx):
 
 
 @CLIENT.command(pass_context=True)
-async def yt(ctx, link):
+async def yt(ctx, link, volumue = 5):
     await helper.play_youtube(CLIENT, await helper.get_user_voice_channel(ctx),
-                              link)
+                              link, volume)
 
 
 CLIENT.run(os.environ.get("DISCORD_CLIENT_TOKEN"))
