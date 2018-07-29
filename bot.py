@@ -5,6 +5,7 @@ import os
 import praw
 from discord.ext import commands
 from dotenv import load_dotenv, find_dotenv
+from random import randint, choice
 
 import helper
 
@@ -71,6 +72,38 @@ async def yt(ctx, link, volume = 5):
     '''Plays a youtube clip audio (good for songs)'''
     await helper.play_youtube(CLIENT, await helper.get_user_voice_channel(ctx),
                               link, volume)
+
+
+@CLIENT.command(pass_context=True)
+async def roll(ctx, maximum = 100):
+    '''Rolls between 0-100'''
+    await CLIENT.say(randint(0, maximum))
+
+
+@CLIENT.command(pass_context=True)
+async def drop(ctx):
+    '''Randomly prints a place to drop in Fortnite'''
+    places = ['Dusty Divot',
+              'Fatal Fields',
+              'Flush Factory',
+              'Greasy Grove',
+              'Haunted Hills',
+              'Junk Junction',
+              'Lazy Links',
+              'Lonely Lodge',
+              'Loot Lake',
+              'Lucky Landing',
+              'Paradise Palms',
+              'Pleasant Park',
+              'Retail Row',
+              'Risky Reels',
+              'Salty Springs',
+              'Shifty Shafts',
+              'Snobby Shores',
+              'Tilted Towers',
+              'Tomato Town',
+              'Wailing Woods']
+    await CLIENT.say(choice(places))
 
 
 CLIENT.run(os.environ.get("DISCORD_CLIENT_TOKEN"))
